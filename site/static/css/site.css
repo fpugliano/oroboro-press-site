@@ -56,3 +56,10 @@ a[aria-disabled="true"] { cursor: default; }
   .shrink-sm { zoom: .62; }
   h1 { font-size: 56px !important; }
 }
+
+/* author pages: on phones the portrait and name stack, centred */
+@media (max-width: 640px) {
+  .author-hero { flex-direction: column; text-align: center; gap: 28px; }
+  .author-hero > div { flex-basis: auto !important; }
+  .author-hero > [role="img"] { width: 240px; max-width: 70vw; height: auto !important; aspect-ratio: 1; }
+}
