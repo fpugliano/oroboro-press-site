@@ -1,46 +1,41 @@
 # Oroboro Press — website
 
-Preview of the Oroboro Press site (Apple Store style). Static HTML, no build step yet.
+Bilingual site (English default, Italian under `/it/`). Static HTML built by a small Python script, hosted on GitHub Pages, DNS on Cloudflare.
 
-Live at **https://anteprima.oroboropress.com** (preview, `noindex`). The real site will move to `oroboropress.com`.
+Live preview: **https://anteprima.oroboropress.com** (not indexed by search engines yet).
 
-## Pages and languages
+## How it's organised
 
-English is the default, at the root; Italian lives in `it/`. Each page links to its twin in the other language, and carries `hreflang` tags for search engines.
+```
+build.py              builds the site into docs/
+site/pages/en/*.html  English content, one file per page (no menu or footer)
+site/pages/it/*.html  Italian content, same file names
+site/static/          files copied as they are: css/, img/, favicons, CNAME
+docs/                 the finished site that GitHub Pages serves (generated, don't edit)
+```
 
-| English (root) | Italian (`it/`) | What |
+The top bar, footer and `<head>` are written once in `build.py`, in both languages.
+
+| Page id | English | Italian |
 |---|---|---|
-| `index.html` | `it/index.html` | Home |
-| `crumbs.html` | `it/crumbs.html` | The *Crumbs* book page |
-| `acquista.html` | `it/acquista.html` | Buy page with format picker |
-| `chi-siamo.html` | `it/chi-siamo.html` | About, help, contacts, press |
-| `nicola-nuti.html` | `it/nicola-nuti.html` | Author page: bio, timeline, archive preview |
+| `home` | `/` | `/it/` |
+| `crumbs` | `/books/crumbs/` | `/it/libri/crumbs/` |
+| `buy` | `/buy/` | `/it/acquista/` |
+| `about` | `/about/` | `/it/chi-siamo/` |
+| `nicola` | `/authors/nicola-nuti/` | `/it/autori/nicola-nuti/` |
 
-- `img/`: logo, iPhone mockup, icons. Favicons and `site.webmanifest` at the root.
-- Prices, cover and bio are placeholders (`[PREZZO]`, `[MESE]` …).
+Every page links to its twin in the other language (the language switch keeps the reader's section), and carries `hreflang` and canonical tags. `404.html` and `sitemap.xml` are generated too.
 
-### How to edit
+## Editing
 
-1. Edit the **Italian** page in `it/`.
-2. Run `python3 tools/translate_en.py`. It rebuilds the English pages at the root from the Italian ones, using the translations listed in the script. If you added a new sentence, it stops and lists what needs translating: add it to the `EN` dictionary and run again.
-3. Commit and push.
+1. Change the page in **both** `site/pages/en/` and `site/pages/it/`.
+2. Link to other pages with tokens, not addresses: `href="@crumbs"`, `href="@about#contatti"`. The build turns them into the right address for each language. `href="#"` marks something not available yet (shown as inactive, "Coming soon").
+3. Images: `/img/...`.
+4. `python3 build.py`, check with `cd docs && python3 -m http.server 8080` → http://localhost:8080
+5. Commit and push (including `docs/`).
 
-## Hosting
+To add a page: add it to `ROUTES` in `build.py` and create `site/pages/en/<id>.html` and `site/pages/it/<id>.html`.
 
-Same as sailingoroboro.com: GitHub Pages from `main` / root. The `CNAME` file sets the custom domain.
+## Going live on oroboropress.com
 
-DNS (Cloudflare, zone `oroboropress.com`):
-
-| Type | Name | Target | Proxy |
-|---|---|---|---|
-| CNAME | `anteprima` | `fpugliano.github.io` | DNS only (grey cloud) |
-
-When the real site goes live at the root domain: change `CNAME` to `oroboropress.com` and `BASE` in `tools/translate_en.py`, add a CNAME record for `@` → `fpugliano.github.io` (Cloudflare flattens it) and `www` → `fpugliano.github.io`, and remove `robots.txt` and the `noindex` meta tags.
-
-## Local preview
-
-```
-python3 -m http.server 8080
-```
-
-then open http://localhost:8080
+In `build.py` set `BASE = "https://oroboropress.com"` and `PREVIEW = False` (removes `noindex`, opens `robots.txt`, publishes the sitemap). Change `site/static/CNAME` to `oroboropress.com`. In Cloudflare add CNAME records `@` and `www` → `fpugliano.github.io` (DNS only), then rebuild and push.
