@@ -9,6 +9,7 @@ Live at **https://anteprima.oroboropress.com** (preview, `noindex`). The real si
 - `index.html`: home
 - `crumbs.html`: the *Crumbs* book page
 - `acquista.html`: buy page with format picker (small inline script)
+- `nicola-nuti.html`: author page (bio, timeline, books, archive placeholder)
 - `chi-siamo.html`: about, help with eBooks/audio, contacts, press
 - `en/index.html`: English landing page
 - `img/`: logo (circular, OROBORO on top, PRESS below) and favicon
