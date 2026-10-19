@@ -1,5 +1,8 @@
 /* Oroboro Press — shared styles. Page sections keep their own inline styles. */
-body { margin: 0; background: #FFFFFF; overflow-x: hidden; }
+body { margin: 0; background: #FFFFFF; }
+/* nothing may make the page wider than the screen (iPhone Safari ignores overflow on body) */
+html, body { overflow-x: clip; }
+img { max-width: 100%; }
 a { color: #0066CC; }
 a:hover { color: #004E9E; }
 a[aria-disabled="true"] { cursor: default; }
@@ -29,7 +32,7 @@ a[aria-disabled="true"] { cursor: default; }
 .footer-brand img { width: 48px; height: 48px; }
 .footer-brand span { font-size: 15px; font-weight: 600; letter-spacing: 0.2em; color: #1D1D1F; }
 .footer-note { margin: 0 0 16px; padding-bottom: 16px; border-bottom: 1px solid #D2D2D7; }
-.footer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; }
+.footer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); gap: 20px; }
 .footer-cols h2 { color: #1D1D1F; font-weight: 600; font-size: 12px; margin: 0 0 8px; }
 .footer-cols ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .footer-cols a, .footer-legal a { color: #424245; text-decoration: none; }
