@@ -47,7 +47,7 @@ DESCRIPTIONS = {
 
 T = {  # words used by the layout
     "en": {
-        "nav_label": "Main", "home_label": "Oroboro Press, home", "bag": "Bag",
+        "nav_label": "Main", "home_label": "Oroboro Press, home", "bag": "Bag", "menu": "Menu",
         "nav": [("@crumbs", "Books"), ("@home#audiolibro", "Audiobooks"), ("@nicola", "Authors"),
                 ("@home#diario", "Journal"), ("@about", "About")],
         "switch": "Italiano", "switch_lang": "it",
@@ -64,7 +64,7 @@ T = {  # words used by the layout
         "not_found": ("Page not found.", "The page you were looking for isn't here. It may have moved when the site changed.", "Go to the home page"),
     },
     "it": {
-        "nav_label": "Principale", "home_label": "Oroboro Press, home", "bag": "Borsa",
+        "nav_label": "Principale", "home_label": "Oroboro Press, home", "bag": "Borsa", "menu": "Menu",
         "nav": [("@crumbs", "Libri"), ("@home#audiolibro", "Audiolibri"), ("@nicola", "Autori"),
                 ("@home#diario", "Diario"), ("@about", "Chi siamo")],
         "switch": "English", "switch_lang": "en",
@@ -84,6 +84,9 @@ T = {  # words used by the layout
 
 BAG_ICON = ('<svg width="15" height="16" viewBox="0 0 15 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">'
             '<path d="M2 5h11l-.8 10H2.8z"></path><path d="M5 5V3.8a2.5 2.5 0 0 1 5 0V5"></path></svg>')
+
+MENU_ICON = ('<svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">'
+             '<path d="M0 1h18M0 6h18M0 11h18"></path></svg>')
 
 
 def url(page, lang, frag=""):
@@ -141,6 +144,7 @@ def topbar(page, lang):
 <a class="brand" href="@home" aria-label="{t['home_label']}"><img src="/img/logo.png" alt=""><span>OROBORO PRESS</span></a>
 {links}<a class="nav-link lang" href="{switch_to}" hreflang="{other}" lang="{other}">{t['switch']}</a>
 <a class="nav-bag" href="@buy" aria-label="{t['bag']}">{BAG_ICON}</a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-label="{t['menu']}">{MENU_ICON}</button>
 </div>
 </nav>
 """, lang)
@@ -164,10 +168,21 @@ def footer(lang):
 """, lang)
 
 
-# the language link keeps the reader on the same section (#formati, #autore …)
+# the language link keeps the reader on the same section (#formati, #autore …);
+# on phones the menu button opens and closes the list of links
 KEEP_PLACE = """<script>
 document.querySelectorAll('a.lang').forEach(function (a) {
   a.addEventListener('click', function () { if (location.hash) a.href = a.href.split('#')[0] + location.hash; });
+});
+document.querySelectorAll('.nav-toggle').forEach(function (b) {
+  var bar = b.closest('.topbar');
+  b.addEventListener('click', function () {
+    var open = bar.classList.toggle('open');
+    b.setAttribute('aria-expanded', open);
+  });
+  bar.querySelectorAll('.nav-link').forEach(function (a) {
+    a.addEventListener('click', function () { bar.classList.remove('open'); b.setAttribute('aria-expanded', false); });
+  });
 });
 </script>
 """
