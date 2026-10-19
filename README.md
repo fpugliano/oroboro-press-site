@@ -1,6 +1,6 @@
-# Oroboro Edizioni — website
+# Oroboro Press — website
 
-Preview of the Oroboro Edizioni site (Apple Store style). Static HTML, no build step yet.
+Preview of the Oroboro Press site (Apple Store style). Static HTML, no build step yet.
 
 Live at **https://anteprima.oroboropress.com** (preview, `noindex`). The real site will move to `oroboropress.com`.
 
@@ -9,7 +9,7 @@ Live at **https://anteprima.oroboropress.com** (preview, `noindex`). The real si
 - `index.html`: home
 - `crumbs.html`: the *Crumbs* book page
 - `acquista.html`: buy page with format picker (small inline script)
-- `img/`: logo (circular, EDIZIONI over the top) and favicon
+- `img/`: logo (circular, OROBORO on top, PRESS below) and favicon
 
 Prices, cover and bio are placeholders (`[PREZZO]`, `[MESE]` …).
 
