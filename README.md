@@ -4,17 +4,26 @@ Preview of the Oroboro Press site (Apple Store style). Static HTML, no build ste
 
 Live at **https://anteprima.oroboropress.com** (preview, `noindex`). The real site will move to `oroboropress.com`.
 
-## Pages
+## Pages and languages
 
-- `index.html`: home
-- `crumbs.html`: the *Crumbs* book page
-- `acquista.html`: buy page with format picker (small inline script)
-- `nicola-nuti.html`: author page (bio, timeline, books, archive placeholder)
-- `chi-siamo.html`: about, help with eBooks/audio, contacts, press
-- `en/index.html`: English landing page
-- `img/`: logo (circular, OROBORO on top, PRESS below) and favicon
+English is the default, at the root; Italian lives in `it/`. Each page links to its twin in the other language, and carries `hreflang` tags for search engines.
 
-Prices, cover and bio are placeholders (`[PREZZO]`, `[MESE]` …).
+| English (root) | Italian (`it/`) | What |
+|---|---|---|
+| `index.html` | `it/index.html` | Home |
+| `crumbs.html` | `it/crumbs.html` | The *Crumbs* book page |
+| `acquista.html` | `it/acquista.html` | Buy page with format picker |
+| `chi-siamo.html` | `it/chi-siamo.html` | About, help, contacts, press |
+| `nicola-nuti.html` | `it/nicola-nuti.html` | Author page: bio, timeline, archive preview |
+
+- `img/`: logo, iPhone mockup, icons. Favicons and `site.webmanifest` at the root.
+- Prices, cover and bio are placeholders (`[PREZZO]`, `[MESE]` …).
+
+### How to edit
+
+1. Edit the **Italian** page in `it/`.
+2. Run `python3 tools/translate_en.py`. It rebuilds the English pages at the root from the Italian ones, using the translations listed in the script. If you added a new sentence, it stops and lists what needs translating: add it to the `EN` dictionary and run again.
+3. Commit and push.
 
 ## Hosting
 
@@ -26,7 +35,7 @@ DNS (Cloudflare, zone `oroboropress.com`):
 |---|---|---|---|
 | CNAME | `anteprima` | `fpugliano.github.io` | DNS only (grey cloud) |
 
-When the real site goes live at the root domain: change `CNAME` to `oroboropress.com`, add a CNAME record for `@` → `fpugliano.github.io` (Cloudflare flattens it) and `www` → `fpugliano.github.io`, and remove `robots.txt` and the `noindex` meta tags.
+When the real site goes live at the root domain: change `CNAME` to `oroboropress.com` and `BASE` in `tools/translate_en.py`, add a CNAME record for `@` → `fpugliano.github.io` (Cloudflare flattens it) and `www` → `fpugliano.github.io`, and remove `robots.txt` and the `noindex` meta tags.
 
 ## Local preview
 
@@ -35,9 +44,3 @@ python3 -m http.server 8080
 ```
 
 then open http://localhost:8080
-
-## Editing
-
-From 19 October 2026 the HTML files here are the source of truth: edit them directly. (The first version was converted from the design mockups; those are no longer kept in sync.)
-
-Pages: `index.html`, `crumbs.html`, `acquista.html`, `chi-siamo.html` (about, help, contacts, press), `en/index.html` (English landing). Links to content that doesn't exist yet are `href="#"` with `aria-disabled="true"` and the tooltip "Presto disponibile".
