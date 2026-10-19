@@ -1,0 +1,34 @@
+# Oroboro Edizioni — website
+
+Preview of the Oroboro Edizioni site (Apple Store style). Static HTML, no build step yet.
+
+Live at **https://anteprima.oroboroedizioni.com** (preview, `noindex`). The real site will move to `oroboroedizioni.com`.
+
+## Pages
+
+- `index.html`: home
+- `crumbs.html`: the *Crumbs* book page
+- `acquista.html`: buy page with format picker (small inline script)
+- `img/`: logo (circular, EDIZIONI over the top) and favicon
+
+Prices, cover and bio are placeholders (`[PREZZO]`, `[MESE]` …).
+
+## Hosting
+
+Same as sailingoroboro.com: GitHub Pages from `main` / root. The `CNAME` file sets the custom domain.
+
+DNS (Cloudflare, zone `oroboroedizioni.com`):
+
+| Type | Name | Target | Proxy |
+|---|---|---|---|
+| CNAME | `anteprima` | `fpugliano.github.io` | DNS only (grey cloud) |
+
+When the real site goes live at the root domain: change `CNAME` to `oroboroedizioni.com`, add a CNAME record for `@` → `fpugliano.github.io` (Cloudflare flattens it) and `www` → `fpugliano.github.io`, and remove `robots.txt` and the `noindex` meta tags.
+
+## Local preview
+
+```
+python3 -m http.server 8080
+```
+
+then open http://localhost:8080
