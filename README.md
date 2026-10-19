@@ -9,6 +9,8 @@ Live at **https://anteprima.oroboropress.com** (preview, `noindex`). The real si
 - `index.html`: home
 - `crumbs.html`: the *Crumbs* book page
 - `acquista.html`: buy page with format picker (small inline script)
+- `chi-siamo.html`: about, help with eBooks/audio, contacts, press
+- `en/index.html`: English landing page
 - `img/`: logo (circular, OROBORO on top, PRESS below) and favicon
 
 Prices, cover and bio are placeholders (`[PREZZO]`, `[MESE]` …).
@@ -32,3 +34,9 @@ python3 -m http.server 8080
 ```
 
 then open http://localhost:8080
+
+## Editing
+
+From 19 October 2026 the HTML files here are the source of truth: edit them directly. (The first version was converted from the design mockups; those are no longer kept in sync.)
+
+Pages: `index.html`, `crumbs.html`, `acquista.html`, `chi-siamo.html` (about, help, contacts, press), `en/index.html` (English landing). Links to content that doesn't exist yet are `href="#"` with `aria-disabled="true"` and the tooltip "Presto disponibile".
