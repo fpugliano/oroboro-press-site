@@ -16,7 +16,7 @@ a{color:#0066CC}a:hover{color:#004E9E}
 body{overflow-x:hidden}
 @media (max-width: 640px){
   nav a:not(:first-child):not([aria-label="Borsa"]){display:none !important}
-  [role="img"][aria-label^="Copertina"],[role="img"][aria-label^="Telefono"],[role="img"][aria-label^="Audiolibro"]{zoom:.62}
+  [role="img"][aria-label^="Copertina"],[role="img"][aria-label^="Telefono"],[role="img"][aria-label^="Audiolibro"],img[alt*="iPhone"]{zoom:.62}
   h1{font-size:56px !important}
 }
 </style>
@@ -54,14 +54,7 @@ body{overflow-x:hidden}
 </div>
 </div>
 <div id="v-audio" style="display: contents">
-<div role="img" id="v-phone" aria-label="Audiolibro su telefono" style="width: 200px; height: 410px; margin-left: -50px; background: #1D1D1F; border-radius: 40px; padding: 9px; box-sizing: border-box; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.4)">
-<div style="width: 100%; height: 100%; border-radius: 31px; background: #2C2C2E; display: flex; flex-direction: column; align-items: center; padding: 36px 18px; box-sizing: border-box; color: #FFFFFF">
-<div style="width: 110px; aspect-ratio: 2 / 3; background: #FFFFFF; border-radius: 3px; padding: 8px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-end; color: #1D1D1F; font-size: 11px; font-weight: 700">CRUMBS</div>
-<div style="margin-top: 18px; font-size: 14px; font-weight: 600">Io e Pratolini</div>
-<div style="font-size: 12px; color: #AEAEB2">Letto da Nicola Nuti</div>
-<div style="width: 100%; height: 4px; border-radius: 2px; background: #48484A; margin-top: 16px; position: relative"><div style="position: absolute; left: 0; top: 0; bottom: 0; width: 55%; border-radius: 2px; background: #FFFFFF"></div></div>
-</div>
-</div>
+<img src="img/iphone-crumbs.png" id="v-phone" alt="Audiolibro di Crumbs su iPhone" style="width: 220px; height: auto; margin-left: -50px; filter: drop-shadow(0 30px 40px rgba(0,0,0,0.25))">
 </div>
 </div>
 <p id="v-caption" style="margin: 0; font-size: 14px; color: #6E6E73">Leggi e ascolta, in un solo acquisto.</p>
