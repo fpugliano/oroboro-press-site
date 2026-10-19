@@ -42,7 +42,7 @@ ROUTES = {
 
 DESCRIPTIONS = {
     "en": "Oroboro Press, an independent publisher in San Francisco, California. Memoir and fiction as eBooks and audiobooks, in Italian and English.",
-    "it": "Oroboro Press, casa editrice indipendente a San Francisco, California. Memorie e narrativa in eBook e audiolibro, in italiano e in inglese.",
+    "it": "Oroboro Press, casa editrice indipendente di San Francisco, California. Memorie e narrativa in eBook e audiolibro, in italiano e in inglese.",
 }
 
 T = {  # words used by the layout
