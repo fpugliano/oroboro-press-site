@@ -48,8 +48,7 @@ DESCRIPTIONS = {
 T = {  # words used by the layout
     "en": {
         "nav_label": "Main", "home_label": "Oroboro Press, home", "bag": "Bag",
-        "nav": [("@crumbs", "Books"), ("@home#audiolibro", "Audiobooks"), ("@nicola", "Authors"),
-                ("@home#diario", "Journal"), ("@about", "About")],
+        "nav": [("@crumbs", "Books"), ("@home#audiolibro", "Audiobooks"), ("@nicola", "Authors"), ("@about", "About")],
         "switch": "Italiano", "switch_lang": "it",
         "note": "Prices include applicable taxes. eBooks are DRM-free EPUB files; audiobooks are MP3. Payments are handled by [PAYMENT PLATFORM].",
         "cols": [
@@ -65,8 +64,7 @@ T = {  # words used by the layout
     },
     "it": {
         "nav_label": "Principale", "home_label": "Oroboro Press, home", "bag": "Borsa",
-        "nav": [("@crumbs", "Libri"), ("@home#audiolibro", "Audiolibri"), ("@nicola", "Autori"),
-                ("@home#diario", "Diario"), ("@about", "Chi siamo")],
+        "nav": [("@crumbs", "Libri"), ("@home#audiolibro", "Audiolibri"), ("@nicola", "Autori"), ("@about", "Chi siamo")],
         "switch": "English", "switch_lang": "en",
         "note": "I prezzi includono le imposte. Gli eBook sono in formato EPUB senza DRM; gli audiolibri in MP3. Il pagamento è gestito da [PIATTAFORMA DI PAGAMENTO].",
         "cols": [
