@@ -63,3 +63,10 @@ a[aria-disabled="true"] { cursor: default; }
   .author-hero > div { flex-basis: auto !important; }
   .author-hero > [role="img"] { width: 240px; max-width: 70vw; height: auto !important; aspect-ratio: 1; }
 }
+
+/* line breaks: headings balanced, paragraphs never end on a single word;
+   .l starts a sentence on its own line, .nw keeps a phrase together */
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+.l { display: block; }
+.nw { white-space: nowrap; }
