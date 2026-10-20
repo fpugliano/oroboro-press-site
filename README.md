@@ -39,3 +39,12 @@ To add a page: add it to `ROUTES` in `build.py` and create `site/pages/en/<id>.h
 ## Going live on oroboropress.com
 
 In `build.py` set `BASE = "https://oroboropress.com"` and `PREVIEW = False` (removes `noindex`, opens `robots.txt`, publishes the sitemap). Change `site/static/CNAME` to `oroboropress.com`. In Cloudflare add CNAME records `@` and `www` → `fpugliano.github.io` (DNS only), then rebuild and push.
+
+Also before going live:
+
+- **Link preview (WhatsApp, Facebook, iMessage):** copy `docs/img/og-image.jpg` from the coming-soon repo
+  (`~/Documents/oroboro-press-coming-soon`, 1200×630, full logo with OROBORO PRESS) into `site/static/img/`, and add to
+  `head()` in `build.py` the same Open Graph tags the coming-soon pages use (`og:image` + width/height/alt, `og:type`,
+  `og:url`, `og:site_name`, `og:locale`, `twitter:card`). Today the site has none, so WhatsApp shows the bare symbol, huge.
+- **Signup form:** reuse the coming-soon form (`js/signup.js` and the Brevo signup Worker) for the "Avvisami" boxes.
+- **Release the domain:** remove the custom domain from the coming-soon repo first (its README, "At launch").
